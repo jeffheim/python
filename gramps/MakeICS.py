@@ -31,10 +31,14 @@ for line in open(file):
         datestr = datetime.datetime(2021, int(month_num), int(date))
         entry = ' '
         entry = entry.join(items[2:])
-        print (datestr, ' ', entry)
+        # get 3 fields
+        fields = entry.split()
+        
+        short = fields[0] + fields[1] + ' ' + fields[-1]
+        print (datestr, ' ', short)
         # make/add the calendar event
         e = Event()
-        e.name = entry
+        e.name = short
 # e.begin = '2021-01-03 09:00:00'
         e.begin = datestr
         e.make_all_day()
